@@ -54,9 +54,8 @@ npm start
 ### Step 5: Get Your Google Sheet ID
 
 1. Create a new Google Sheet at [sheets.google.com](https://sheets.google.com)
-2. Create three sheets/tabs with exact names:
+2. Create two sheets/tabs with exact names:
    - `ContactUs`
-   - `Internships`
    - `SalesServices`
 3. Add column headers as shown below
 4. Copy the **Sheet ID** from the URL:
@@ -70,11 +69,6 @@ npm start
 **ContactUs (A1:E1):**
 ```
 Timestamp | Name | Email | Subject | Message
-```
-
-**Internships (A1:H1):**
-```
-Timestamp | Name | Email | Phone | College | Year | Domain | Experience
 ```
 
 **SalesServices (A1:G1):**
@@ -111,7 +105,6 @@ The server will start on `http://localhost:3001`
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | POST | `/api/contact` | Submit contact form |
-| POST | `/api/internship` | Submit internship application |
 | POST | `/api/sales` | Submit sales inquiry |
 | GET | `/api/health` | Health check |
 
@@ -134,5 +127,4 @@ The server will start on `http://localhost:3001`
 All three forms are already configured to submit to the backend:
 
 - [`ContactUs.jsx`](veertrons/src/pages/ContactUs.jsx)
-- [`InternshipForm.jsx`](veertrons/src/pages/InternshipForm.jsx)
 - [`SalesServices.jsx`](veertrons/src/pages/SalesServices.jsx)

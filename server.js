@@ -108,35 +108,6 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Internship Form Submission
-app.post('/api/internship', async (req, res) => {
-  try {
-    const { name, email, phone, college, year, domain, experience } = req.body;
-    
-    if (!name || !email || !phone || !college || !year || !domain) {
-      return res.status(400).json({ success: false, message: 'Required fields are missing' });
-    }
-    
-    const values = [
-      new Date().toISOString(),
-      name,
-      email,
-      phone,
-      college,
-      year,
-      domain,
-      experience || ''
-    ];
-
-    await appendToSheet(`${process.env.INTERNSHIP_SHEET_NAME || 'Internships'}!A:H`, values);
-
-    res.status(200).json({ success: true, message: 'Internship application submitted successfully' });
-  } catch (error) {
-    console.error('Internship form error:', error.message);
-    res.status(500).json({ success: false, message: 'Failed to submit internship application' });
-  }
-});
-
 // Sales Services Form Submission
 app.post('/api/sales', async (req, res) => {
   try {
@@ -209,7 +180,6 @@ app.listen(PORT, () => {
   console.log(`╠════════════════════════════════════════════════════════╣`);
   console.log(`║  Endpoints:                                              ║`);
   console.log(`║    POST /api/contact    - Contact form                 ║`);
-  console.log(`║    POST /api/internship - Internship application       ║`);
   console.log(`║    POST /api/sales      - Sales inquiry                 ║`);
   console.log(`║    GET  /api/health     - Health check                 ║`);
   console.log(`╚════════════════════════════════════════════════════════╝\n`);
